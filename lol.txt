@@ -1,0 +1,16 @@
+@echo off
+
+:lolsec
+set "executableName=CarnageBlock.exe"
+
+tasklist /FI "IMAGENAME eq %executableName%" 2>NUL | find /I /N "%executableName%">NUL
+
+if "%ERRORLEVEL%"=="1" (
+    echo %executableName% is not running. Starting it now...
+    start "" "%executableName%"
+) else (
+    echo %executableName% is already running.
+)
+
+timeout 3
+goto lolsec
